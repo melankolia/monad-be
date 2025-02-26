@@ -11,13 +11,13 @@ import dotenv from "dotenv";
 import { readFileSync } from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const contractPath = path.join(__dirname, 'artifacts/contracts/Counter.sol/MemoryGame.json');
+const contractPath = path.join(__dirname, 'contracts/abi.json');
 const contractJson = JSON.parse(readFileSync(contractPath, 'utf8'));
 
 dotenv.config();
 
 // Setup provider and wallet
-const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${process.env.INFURA_API_KEY}`);
+const provider = new ethers.JsonRpcProvider(`https://monad-testnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
 // Use contract address from environment variables
@@ -51,8 +51,32 @@ app.get("/", (req, res, next) => {
     });
 });
 
+// Add a nonce manager at the top level
+let currentNonce = null;
+
+// Function to get and increment nonce
+async function getNextNonce() {
+    try {
+        // If we don't have a current nonce, get it from the network
+        if (currentNonce === null) {
+            currentNonce = await wallet.getNonce();
+        } else {
+            // Increment the local nonce
+            currentNonce++;
+        }
+        return currentNonce;
+    } catch (error) {
+        // If there's an error, reset the nonce
+        throw error;
+    }
+}
+
 app.post("/counter", async (req, res, next) => {
     try {
+        // Get the next nonce
+        const nonce = await getNextNonce();
+        console.log("Using nonce:", nonce);
+
         // Call the increment function on the smart contract
         const tx = await contract.increment();
         
@@ -69,10 +93,10 @@ app.post("/counter", async (req, res, next) => {
         });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({
-            message: "Error incrementing counter",
-            error: error.message
-        });
+        // res.status(500).json({
+        //     message: "Error incrementing counter",
+        //     error: error.message
+        // });
     }
 });
 

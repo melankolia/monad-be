@@ -1,8 +1,11 @@
 import hre from "hardhat";
-const { ethers } = hre;
 
 async function main() {
-  const MemoryGame = await ethers.getContractFactory("MemoryGame");
+  const [deployer] = await hre.ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", deployer.address);
+
+  const MemoryGame = await hre.ethers.getContractFactory("MemoryGame");
   const memoryGame = await MemoryGame.deploy();
 
   await memoryGame.waitForDeployment();

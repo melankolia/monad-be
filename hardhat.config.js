@@ -17,6 +17,14 @@ const config = {
       timeout: 60000 // 60 seconds
     }
   },
+  etherscan: {
+    apiKey: {
+      sepolia: process.env.ETHERSCAN_API_KEY
+    }
+  },
+  sourcify: {
+    enabled: true
+  },
   paths: {
     sources: "./contracts",
     tests: "./test",
