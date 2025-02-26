@@ -12,10 +12,13 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "ethers": "^6.11.1",
     "morgan": "^1.10.0"
-
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.4.7",
+    "hardhat": "^2.22.19",
     "nodemon": "^3.1.9"
   }
 }
