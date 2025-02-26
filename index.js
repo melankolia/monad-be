@@ -33,4 +33,14 @@ app.get("/", (req, res, next) => {
     });
 });
 
+let counter = 0;
+
+app.post("/counter", (req, res, next) => {
+  counter++;
+  res.status(200).json({
+    message: "Counter",
+    counter
+  });
+});
+
 app.listen(5173, () => console.log("Server running on port 5173"));
