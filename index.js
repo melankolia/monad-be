@@ -3,7 +3,11 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import logger from "morgan";
+import { fileURLToPath } from 'url';
 
+// Get __dirname equivalent for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -24,9 +28,9 @@ app.use(logger("combined"));
 app.use("/output", express.static("public"));
 
 app.get("/", (req, res, next) => {
-    res.statusCode(200).json({
+    res.status(200).json({
         message: "Hello World"
     });
-  });
+});
 
-  app.listen(5173, () => console.log("Server running on port 5173"));
+app.listen(5173, () => console.log("Server running on port 5173"));
