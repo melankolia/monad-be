@@ -1,0 +1,311 @@
+{
+    "abi": [
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "newCount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "CounterIncremented",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "secureId",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "score",
+                    "type": "uint256"
+                }
+            ],
+            "name": "NewPendingScore",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "secureId",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "player",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "score",
+                    "type": "uint256"
+                }
+            ],
+            "name": "ScoreClaimed",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "secureId",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "player",
+                    "type": "address"
+                }
+            ],
+            "name": "claimScore",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getCount",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getHighScores",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "string",
+                            "name": "secureId",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "player",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "score",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "claimed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct MemoryGame.Score[]",
+                    "name": "",
+                    "type": "tuple[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "player",
+                    "type": "address"
+                }
+            ],
+            "name": "getPlayerScores",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "string",
+                            "name": "secureId",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "player",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "score",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "claimed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct MemoryGame.Score[]",
+                    "name": "",
+                    "type": "tuple[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "highScores",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "secureId",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "player",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "score",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "claimed",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "increment",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "name": "pendingScores",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "secureId",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "player",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "score",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "claimed",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "playerScores",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "secureId",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "player",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "score",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "claimed",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "secureId",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "score",
+                    "type": "uint256"
+                }
+            ],
+            "name": "submitScore",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ]
+}
