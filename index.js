@@ -121,7 +121,7 @@ app.post("/claim-score", async (req, res, next) => {
     console.log("Using nonce:", nonce);
 
     const secureId = req.body.secureId;
-    const player = req.body.address;
+    const player = req.body.player;
 
     if (!secureId) {
       return res.status(400).json({
