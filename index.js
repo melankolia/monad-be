@@ -86,8 +86,7 @@ app.post("/score", async (req, res, next) => {
     const nonce = await getNextNonce();
     console.log("Using nonce:", nonce);
 
-    const secureId =
-      req.body.secureId || "0x0000000000000000000000000000000000000000";
+    const secureId = req.body.secureId;
     const score = req.body.score || 0;
 
     if (!secureId) {
@@ -121,8 +120,7 @@ app.post("/claim-score", async (req, res, next) => {
     const nonce = await getNextNonce();
     console.log("Using nonce:", nonce);
 
-    const secureId =
-      req.body.secureId || "0x0000000000000000000000000000000000000000";
+    const secureId = req.body.secureId;
     const player = req.body.address;
 
     if (!secureId) {
