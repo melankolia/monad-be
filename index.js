@@ -98,8 +98,6 @@ app.post("/score", async (req, res, next) => {
     // Call the increment function on the smart contract
     const tx = await contract.submitScore(secureId, score, { nonce });
 
-    console.log({ tx });
-
     // Wait for the transaction to be mined
     const receipt = await tx.wait();
 
@@ -192,10 +190,8 @@ app.post("/player-score", async (req, res, next) => {
 app.get("/leaderboard", async (req, res, next) => {
   try {
     // Get the next nonce
-    const nonce = await getNextNonce();
-    console.log("Using nonce:", nonce);
 
-    const scores = await contract.getHighScores({ nonce });
+    const scores = await contract.getHighScores();
     const response = toObject(scores).map((e) => {
       return {
         secureId: e[0] || "-",
